@@ -30,8 +30,12 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String acronym(String phrase) {
-		// TODO Write an implementation for this method declaration
-		return null;
+	/* 
+	 * Author: Joshua O'Silas
+	 * Class: 1909
+	 * Assignment Due Date: 10/18/2019
+	 */
+		return phrase.replaceAll("\\B.|\\P{L}","").toUpperCase();
 	}
 
 	/**
