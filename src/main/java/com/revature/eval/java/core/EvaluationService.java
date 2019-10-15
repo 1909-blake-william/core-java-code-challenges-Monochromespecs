@@ -1,6 +1,8 @@
 package com.revature.eval.java.core;
 
 import java.time.temporal.Temporal;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -29,12 +31,13 @@ public class EvaluationService {
 	 * @param phrase
 	 * @return
 	 */
-	public String acronym(String phrase) {
 	/* 
 	 * Author: Joshua O'Silas
 	 * Class: 1909
-	 * Assignment Due Date: 10/18/2019
+	 * Assighment Due Date: 10/18/2019
 	 */
+	public String acronym(String phrase) {
+		
 		return phrase.replaceAll("\\B.|\\P{L}","").toUpperCase();
 	}
 
@@ -46,6 +49,11 @@ public class EvaluationService {
 	 * exercise we'll say at least two.) A scalene triangle has all sides of
 	 * different lengths.
 	 *
+	 */
+	/* 
+	 * Author: Joshua O'Silas
+	 * Class: 1909
+	 * Assighment Due Date: 10/18/2019
 	 */
 	static class Triangle {
 		private double sideOne;
@@ -88,17 +96,24 @@ public class EvaluationService {
 		}
 
 		public boolean isEquilateral() {
-			// TODO Write an implementation for this method declaration
-			return false;
+			
+			if (getSideOne() != getSideTwo() || getSideOne() != getSideThree()) 
+				return false;
+			else 
+				return true;
 		}
 
 		public boolean isIsosceles() {
-			// TODO Write an implementation for this method declaration
+			
+			if (isEquilateral() == false)
+				if (getSideOne() == getSideTwo() || getSideOne() == getSideThree() || getSideTwo() == getSideThree())
+					return true;
 			return false;
 		}
 
 		public boolean isScalene() {
-			// TODO Write an implementation for this method declaration
+			if (!isEquilateral() && !isIsosceles())
+				return true;
 			return false;
 		}
 
@@ -120,9 +135,64 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int getScrabbleScore(String string) {
-		// TODO Write an implementation for this method declaration
-		return 0;
-	}
+		
+		Map<String, Integer> letterToPointValue = new HashMap<String, Integer>();
+		letterToPointValue.put("A".toLowerCase(), 1);
+		letterToPointValue.put("B".toLowerCase(), 3);
+		letterToPointValue.put("C".toLowerCase(), 3);
+		letterToPointValue.put("D".toLowerCase(), 2);
+		letterToPointValue.put("E".toLowerCase(), 1);
+		letterToPointValue.put("F".toLowerCase(), 4);
+		letterToPointValue.put("G".toLowerCase(), 2);
+		letterToPointValue.put("H".toLowerCase(), 4);
+		letterToPointValue.put("I".toLowerCase(), 1);
+		letterToPointValue.put("J".toLowerCase(), 8);
+		letterToPointValue.put("K".toLowerCase(), 5);
+		letterToPointValue.put("L".toLowerCase(), 1);
+		letterToPointValue.put("M".toLowerCase(), 3);
+		letterToPointValue.put("N".toLowerCase(), 1);
+		letterToPointValue.put("O".toLowerCase(), 1);
+		letterToPointValue.put("P".toLowerCase(), 3);
+		letterToPointValue.put("Q".toLowerCase(), 10);
+		letterToPointValue.put("R".toLowerCase(), 1);
+		letterToPointValue.put("S".toLowerCase(), 1);
+		letterToPointValue.put("T".toLowerCase(), 1);
+		letterToPointValue.put("U".toLowerCase(), 1);
+		letterToPointValue.put("V".toLowerCase(), 4);
+		letterToPointValue.put("W".toLowerCase(), 4);
+		letterToPointValue.put("X".toLowerCase(), 8);
+		letterToPointValue.put("Y".toLowerCase(), 4);
+		letterToPointValue.put("Z".toLowerCase(), 10);
+		
+		int result = 0;
+		
+		Iterator<String> itr = letterToPointValue.keySet().iterator();
+		while (itr.hasNext()){
+			String key = itr.next();
+			Integer value = letterToPointValue.get(key);
+			result += value;
+		}
+//		char[] c = string.toCharArray();
+//		for (String str : letterToPointValue.keySet()) {
+//			if (c.length == 1){
+//				result += letterToPointValue.get(string);
+//			} else {
+//				for (int i = 0; i < c.length-1; i++ ) {
+//					if (c[i] == letterToPointValue.get(str))
+//						result += c[i];
+//				}
+//			}
+			System.out.println(result);
+			return result;
+		}
+		
+//			System.out.println(letterToPointValue.get(string));
+//		return result;
+		
+//		result += letterToPointValue.get(string);
+		
+		
+//	}
 
 	/**
 	 * 5. Clean up user-entered phone numbers so that they can be sent SMS messages.
