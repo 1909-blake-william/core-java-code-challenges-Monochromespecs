@@ -1,6 +1,7 @@
 package com.revature.eval.java.core;
 
 import java.time.temporal.Temporal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -166,23 +167,28 @@ public class EvaluationService {
 		
 		int result = 0;
 		
-		Iterator<String> itr = letterToPointValue.keySet().iterator();
-		while (itr.hasNext()){
-			String key = itr.next();
-			Integer value = letterToPointValue.get(key);
-			result += value;
+//		Iterator<String> itr = letterToPointValue.keySet().iterator();
+//		while (itr.hasNext()){
+//			String key = itr.next();
+//			Integer value = letterToPointValue.get(key);
+//			result += value;
+//		}
+		char[] c = string.toCharArray();
+		
+		if (c.length == 1)
+			return result += letterToPointValue.get(string);
+		
+		
+		for (String str : letterToPointValue.keySet()) {
+//			System.out.println(letterToPointValue.keySet());
+//			System.out.println(letterToPointValue.values());
+				if (string.equals(letterToPointValue.get(str)))
+					for (int strValue : letterToPointValue.values()) {
+						result += letterToPointValue.get(str);
+//				System.out.println(result);
+				}
 		}
-//		char[] c = string.toCharArray();
-//		for (String str : letterToPointValue.keySet()) {
-//			if (c.length == 1){
-//				result += letterToPointValue.get(string);
-//			} else {
-//				for (int i = 0; i < c.length-1; i++ ) {
-//					if (c[i] == letterToPointValue.get(str))
-//						result += c[i];
-//				}
-//			}
-			System.out.println(result);
+//			System.out.println(result);
 			return result;
 		}
 		
@@ -192,7 +198,7 @@ public class EvaluationService {
 //		result += letterToPointValue.get(string);
 		
 		
-//	}
+	
 
 	/**
 	 * 5. Clean up user-entered phone numbers so that they can be sent SMS messages.
@@ -226,7 +232,13 @@ public class EvaluationService {
 	 * NANP-countries, only 1 is considered a valid country code.
 	 */
 	public String cleanPhoneNumber(String string) {
-		// TODO Write an implementation for this method declaration
+
+		char[] c = string.toCharArray();
+		for (int i = 0; i < 2; i++){
+			if (c[0] < 1)
+				return "Only 1 is considered a valid country code";
+		}
+		
 		return null;
 	}
 
@@ -240,7 +252,8 @@ public class EvaluationService {
 	 * @return
 	 */
 	public Map<String, Integer> wordCount(String string) {
-		// TODO Write an implementation for this method declaration
+		
+		
 		return null;
 	}
 
@@ -320,8 +333,22 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String toPigLatin(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+//		string.
+//		List<Character> c = string.;
+		String newString = new String();
+		if (string.startsWith("a") | string.startsWith("e") | string.startsWith("i") | string.startsWith("o") | 
+				string.startsWith("u") | string.startsWith("y")) {
+			string = string.substring(string.length()) + string.substring(0, string.length()) + "ay";
+			System.out.println(string);
+			return string;
+		}
+		
+		if (!string.startsWith("a") | !string.startsWith("e") | !string.startsWith("i") | !string.startsWith("o") | 
+				!string.startsWith("u") | !string.startsWith("y")) {
+			newString = newString.concat(string.substring(0, 1)) + "ay";
+			System.out.println(string);
+		}
+		return newString;
 	}
 
 	/**
@@ -340,8 +367,16 @@ public class EvaluationService {
 	 * @return
 	 */
 	public boolean isArmstrongNumber(int input) {
-		// TODO Write an implementation for this method declaration
-		return false;
+		
+//		String str = (String) Integerinput;
+		
+		int numberOfDigits = 0;
+		if (input == input*(1))
+			return true;
+		else
+			return false;
+//		if (input == ){} 
+//		return false;
 	}
 
 	/**
@@ -355,8 +390,13 @@ public class EvaluationService {
 	 * @return
 	 */
 	public List<Long> calculatePrimeFactorsOf(long l) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		
+		List<Long> lList = new ArrayList<Long>();
+		
+		if (l%l == 0 )
+			lList.add(l);
+		System.out.println(lList);
+		return lList;
 	}
 
 	/**
@@ -413,7 +453,15 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int calculateNthPrime(int i) {
-		// TODO Write an implementation for this method declaration
+		
+		if (i <= 1)
+			return 2;
+		for (int j = 1; j <= i;j++) {
+			if (i == i*1){
+				
+			}
+		}
+		
 		return 0;
 	}
 
